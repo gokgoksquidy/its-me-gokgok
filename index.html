@@ -1,0 +1,243 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <title> GOKGOK</title>
+</head>
+  
+  <body    >
+    
+
+  <style>
+ 
+ 
+  
+body{
+
+background-image:url(' https://t4.ftcdn.net/jpg/05/87/29/77/360_F_587297775_Fb3sd8Caflgn9YUv8dPUpG8LUw1axRyL.jpg') ;
+background-size: cover;
+}
+ 
+ .btn{
+    background-color: black;
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  text-align: center;
+  font-size: 12px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+   
+}
+ 
+
+.btn:hover{opacity: 1}
+
+
+#butom{
+    background-color: black;
+  border: none;
+  color: white;
+  padding: 12px 22px;
+  text-align: center;
+  font-size: 12px;
+  margin: 4px 2px;
+  opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+
+   
+}
+ 
+
+#butom:hover{opacity: 1}
+
+
+
+    input{
+    width: 50%;
+  padding: 9px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#demo {
+    font-size: large;
+    text-align: center;
+
+ }
+ .table{
+padding: 4px 100px;
+    margin-left: auto;
+  margin-right: auto;
+  font-size: x-large;
+   background-color: rgb(190, 185, 185);
+ }
+#gender{
+
+    padding: 5px 150px;
+
+}
+ .text{
+width: 20% ;
+    font-size: large;
+    
+ }
+
+
+
+    </style>
+
+ 
+
+        <h1 style="text-align: center; color:rgb(27, 28, 29);"> Student Datasheet</h1>
+        <div id="demo"  >
+            <label  >Name:</label>
+             
+            <input type="text" value="" id="name" />
+            <br><br>
+            <label>Address:</label>
+            <input type="text" value="" id="address"/>
+            <br>
+            <br>
+            <label>Age:</label>
+            <input type="number" value="" id="age"/>
+            <br>
+            <br>
+            
+            <label>Gender  </label>
+            <select id="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+            <br>
+            <br>
+            <button class="btn"  onclick="add()">ADD</button>
+            <button id="butom" onclick="clear_form()">CLEAR</button>
+            
+        </div>
+        <br>
+        <br>
+        <table border="1" class="table">
+            <tr class="text">
+            <th>#</th>
+            <th>Name</th>
+            <th>address</th>
+            <th>Age</th>
+            <th>Gender</th>
+           <th>Action</th>
+            
+           
+            </tr>
+                <tbody id = "student_table">
+                
+            </tbody>
+            </table>
+    </body>
+    <script>
+            function add(){
+
+                 
+                
+            
+                
+                const name=document.getElementById("name").value;
+                const address=document.getElementById("address").value;
+                const age=document.getElementById("age").value;
+                const gender=document.getElementById("gender").value;
+                
+                if(name == "" || address == "" || age=="" ){
+
+            alert("may kulang ka!");
+            return;
+                }
+                alert("ok na!");
+                
+
+                 
+                 
+
+                const tr= document.createElement("tr");
+                const td_num= document.createElement("td");
+                const td_name= document.createElement("td");
+                const td_address= document.createElement("td");
+                const td_age= document.createElement("td");
+                const td_gender= document.createElement("td");
+                const td_button= document.createElement("button");
+                const td_edit= document.createElement("button");
+            
+                 
+
+                td_num.innerText = generate_id();
+                td_name.innerText = name;
+                td_address.innerText= address;
+                td_age.innerText = age  + " "+ "years old";
+                td_gender.innerText = gender ;  
+                td_button.innerText= "REMOVE"  ; 
+                td_edit.innerText= " EDIT"  ; 
+               
+             
+             
+                document.getElementById("name" ).value="";
+                document.getElementById("address" ).value="";
+                document.getElementById("age" ).value="";
+                document.getElementById("gender" ).value="";
+                
+                
+                 
+                
+
+
+                td_button.addEventListener( "click", function (){
+                    tr.remove()
+                    
+                })
+                               
+                
+               tr.appendChild(td_num);
+               tr.appendChild(td_name);
+               tr.appendChild(td_address);
+               tr.appendChild(td_age);
+               tr.appendChild(td_gender);
+               tr.appendChild( td_button);
+               tr.appendChild( td_edit);
+              
+                
+                
+               const student_table = document.getElementById("student_table")
+
+               student_table.appendChild(tr);
+                
+
+ } 
+
+function generate_id(){
+    const random = Math.random() * 10000;
+    const rounded_off_random = Math.floor(random);
+    return rounded_off_random ;
+}
+
+ function clear_form   () {
+    
+    document.getElementById("name" ).value="";
+    document.getElementById("address" ).value="";
+    document.getElementById("age" ).value="";
+    document.getElementById("gender" ).value="";
+    
+
+
+     
+ }
+ 
+  
+
+    </script>
+ </html>
+     
+
